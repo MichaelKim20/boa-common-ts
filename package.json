@@ -1,0 +1,69 @@
+{
+  "name": "boa-common-ts",
+  "version": "0.0.8",
+  "description": "The TypeScript BOA common library",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "json2ts": "./node_modules/.bin/json2ts -i src/modules/data/schemas/ -o src/modules/data/types/",
+    "copyschema": "./node_modules/.bin/copyfiles --flat src/modules/data/schemas/*.* lib/modules/data/schemas/",
+    "removelib": "rimraf ./lib",
+    "tsc": "tsc",
+    "coretest": "mocha -r ts-node/register tests/**/*.test.ts",
+    "test": "npm-run-all --serial removelib json2ts tsc copyschema coretest",
+    "testnobuild": "npm-run-all --serial coretest",
+    "build": "npm-run-all --serial removelib json2ts tsc copyschema",
+    "browser": "rimraf ./dist && webpack --config webpack.config.js",
+    "removedocs": "rimraf ./docs",
+    "coredocs": "./node_modules/.bin/typedoc --options ./typedoc.js --module commonjs",
+    "docs": "npm-run-all --serial removedocs coredocs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpfkorea/boa-common-ts.git"
+  },
+  "keywords": [
+    "BOA",
+    "common libaray",
+    "TypeScript"
+  ],
+  "author": "BOS Platform Foundation Korea",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bpfkorea/boa-common-ts/issues"
+  },
+  "homepage": "https://bpfkorea.github.io/boa-common-ts/",
+  "dependencies": {
+    "@ctrl/ts-base32": "^1.2.1",
+    "crc": "^3.8.0",
+    "json-schema-to-typescript": "^9.1.1",
+    "libsodium-wrappers-sumo": "^0.7.8",
+    "lodash": "^4.17.19",
+    "randombytes": "^2.1.0",
+    "smart-buffer": "^4.1.0",
+    "urijs": "^1.19.2"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/crc": "^3.4.0",
+    "@types/express": "^4.17.6",
+    "@types/libsodium-wrappers-sumo": "^0.7.3",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^14.0.14",
+    "@types/randombytes": "^2.0.0",
+    "@types/urijs": "^1.19.9",
+    "assert": "^2.0.0",
+    "chai": "^4.2.0",
+    "copyfiles": "^2.4.0",
+    "express": "^4.17.1",
+    "mocha": "^8.0.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "ts-loader": "^7.0.5",
+    "ts-node": "^8.10.2",
+    "typedoc": "^0.17.8",
+    "typescript": "^3.9.5",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12"
+  }
+}

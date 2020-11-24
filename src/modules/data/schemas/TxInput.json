@@ -1,0 +1,14 @@
+{
+  "title": "ITxInput",
+  "type": "object",
+  "properties": {
+    "utxo": {
+      "type": "string"
+    },
+    "signature": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "required": ["utxo", "signature"]
+}
